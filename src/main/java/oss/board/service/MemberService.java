@@ -1,26 +1,21 @@
 package oss.board.service;
-
 import oss.board.domain.Member;
 import oss.board.repository.MemberRepository;
 import oss.board.repository.MemoryMemberRepository;
-
 import java.util.List;
 import java.util.Optional;
-
 public class MemberService {
     private final MemberRepository memberRepository = new MemoryMemberRepository();
 
-    /**
-     * 회원가입 중 중복제거 함
-     */
+    public MemberService(MemoryMemberRepository memberRepository) {
+    }
+     // 회원가입 중 중복제거 함
     public Long join(Member member) {
 
         validateDuplicateMember(member); // 중복 회원 검증
-
         memberRepository.save(member);
         return member.getId();
     }
-
     private void validateDuplicateMember(Member member) {
         memberRepository.findByName(member.getName())
                 .ifPresent(m -> {
