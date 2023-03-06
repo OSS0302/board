@@ -1,8 +1,8 @@
 package oss.board.domain;
 
 public class Member {
-    private Long id;
-    private String name;
+    private Long id; //아이디 식별자
+    private String name; //고객이름
 
     public Long getId() {
         return id;
