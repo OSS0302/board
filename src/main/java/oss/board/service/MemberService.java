@@ -1,13 +1,18 @@
 package oss.board.service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import oss.board.domain.Member;
 import oss.board.repository.MemberRepository;
 import oss.board.repository.MemoryMemberRepository;
 import java.util.List;
 import java.util.Optional;
-public class MemberService {
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
 
+@Service
+public class MemberService {
+    private final MemberRepository memberRepository;
+    @Autowired
     public MemberService(MemoryMemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
      // 회원가입 중 중복제거 함
     public Long join(Member member) {
