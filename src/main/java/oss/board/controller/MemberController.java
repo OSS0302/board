@@ -29,7 +29,6 @@ public class MemberController {
         System.out.println("member.getName() = " + member.getName()); //sotuv
         memberService.join(member);
         return "redirect:/";
-
     }
     @GetMapping("/members")
     public String list(Model model){
